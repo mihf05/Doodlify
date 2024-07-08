@@ -40,7 +40,8 @@ Doodle - Illustrations
   <a href="{% url 'create_doodle' %}" class="btn btn-success" style="position: relative; left: 100px; top: 100px;">Post a Doodle</a>
 
   <main style=" max-width: 1200px; margin: 30px auto; padding: 0 20px; width: 100%; display: grid; grid-auto-rows: 450px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 1em;">
-    {% for doodle in post_doodle %}
+    #{% for doodle in post_doodle %}
+    {{doodle.photo.url}}
     <div style="border-radius: 10px; padding: 10px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer; margin-top: 100px;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
       <img src="{{doodle.photo.url}}" style="height: 200px; display: block; margin: auto;">
       <h5>{{doodle.user.username}}</h5>
