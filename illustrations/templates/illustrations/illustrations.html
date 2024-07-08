@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Doodle - Illustrations
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-black" href="/">Doodle</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-black" aria-current="page" href="{% url 'illustrations' %}">Illustrations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black" href="{% url 'artists' %}">Artists</a>
+        </li>
+      </ul>
+      {% if user.is_authenticated %}
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger mx-2" type="submit">Logout</button>
+      </form>
+      {% else %}
+      <a class="btn btn-outline-success" style="margin-right: 8px;" href="{% url 'register' %}">Sign up</a>
+      <a class="btn btn-success" href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+  <h1 class="text-black" style="position: relative; left: 100px; top: 100px; width: 500px;">All Doodles</h1>
+  <p class="text-black" style="position: relative; left: 100px; top: 100px; width: 500px;">These all are masterpieces made by artists around the world</p>
+  <a href="{% url 'create_doodle' %}" class="btn btn-success" style="position: relative; left: 100px; top: 100px;">Post a Doodle</a>
+
+  <main style=" max-width: 1200px; margin: 30px auto; padding: 0 20px; width: 100%; display: grid; grid-auto-rows: 450px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 1em;">
+    {% for doodle in post_doodle %}
+    <div style="border-radius: 10px; padding: 10px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer; margin-top: 100px;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
+      <img src="{{doodle.photo.url}}" style="height: 200px; display: block; margin: auto;">
+      <h5>{{doodle.user.username}}</h5>
+      <p class="mb-2">{{doodle.text}}</p>
+      {% if doodle.user == user %}
+      <a href="{% url 'delete_doodle' doodle.id %}" type="button" class="btn btn-danger" style="position: relative; top: 10px;">Delete</a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </main>
+
+  
+
+{% endblock %}

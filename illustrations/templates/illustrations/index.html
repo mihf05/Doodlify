@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-black" href="/">Doodle</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-black" aria-current="page" href="{% url 'illustrations' %}">Illustrations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black" href="{% url 'artists' %}">Artists</a>
+        </li>
+      </ul>
+      {% if user.is_authenticated %}
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger mx-2" type="submit">Logout</button>
+      </form>
+      {% else %}
+      <a class="btn btn-outline-success" style="margin-right: 8px;" href="{% url 'register' %}">Sign up</a>
+      <a class="btn btn-success" href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+  <div style="height: 300px; width: 100%;" class="text-center">
+    <h1 class="text-black" style="margin-top: 180px;">Share your Illustrations with people like you</h1>
+    <p class="text-black">Create, share your creativity with artists across the globe. Try it! it is kind of fun</p>
+    <a type="button" class="btn btn-success btn-lg" href="{% url 'illustrations' %}">Get Started</a>
+  </div>
+
+  <div class="" style="width: 100%;">
+    <h2  class="text-center text-black mt-5">How does Doodle makes sharing your<br> projects simple and fun?</h2>
+    <main style="max-width: 1200px; margin: 30px auto; padding: 0 20px; width: 100%; display: grid; grid-auto-rows: 370px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 1em;">
+      <div style="border-radius: 10px; padding: 20px; color: #000;">
+        <img src="{% static 'assets/step-1.png' %}">
+        <h3 style="margin-top: 5px;">1 - Choose a style</h3>
+        <p>Choose a style from collections and themes made by artists around the world</p>
+      </div>
+      <div style="border-radius: 10px; padding: 20px; color: #000;">
+        <img src="{% static 'assets/step-2.png' %}" style="height: 208px; width: 278px;">
+        <h3 style="margin-top: 8px;">2 - Create your art</h3>
+        <p>Play around the variations until you create your own art that tells your story</p>
+      </div>
+      <div style="border-radius: 10px; padding: 20px; color: #000;">
+        <img src="{% static 'assets/step-3.png' %}" style="height: 208px; width: 316px;">
+        <h3 style="margin-top: 5px;">3 - Share it on Doodle</h3>
+        <p>Now everything is done so share it on Doodle to be it someone's style</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="" style="width: 100%;">
+    <h3 class="text-black" style="margin-left: 115px;">From the community</h3>
+    <main style=" max-width: 1200px; margin: 30px auto; padding: 0 20px; width: 100%; display: grid; grid-auto-rows: 300px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 1em;">
+      <div class="text-center" style="border-radius: 10px; padding: 20px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
+        <img src="{% static 'assets/image-1.png' %}" style="height: 200px; margin-top: 30px;">
+      </div>
+      <div class="text-center" style="border-radius: 10px; padding: 20px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
+        <img src="{% static 'assets/image-2.png' %}" style="height: 200px; margin-top: 30px;">
+      </div>
+      <div class="text-center" style="border-radius: 10px; padding: 20px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
+        <img src="{% static 'assets/image-3.png' %}" style="height: 200px; margin-top: 30px;">
+      </div>
+      <div class="text-center" style="border-radius: 10px; padding: 20px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
+        <img src="{% static 'assets/image-4.png' %}" style="height: 200px; margin-top: 30px;">
+      </div>
+      <div class="text-center" style="border-radius: 10px; padding: 20px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
+        <img src="{% static 'assets/image-5.png' %}" style="height: 200px; margin-top: 30px;">
+      </div>
+      <div class="text-center" style="border-radius: 10px; padding: 20px; color: #000; border: 1px solid #dbdbdb; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0px)';">
+        <img src="{% static 'assets/image-6.png' %}" style="height: 200px; margin-top: 30px;">
+      </div>
+    </main>
+  </div>
+
+  <div class="text-center" style="height: 400px; width: 100%;">
+      <img src="{% static 'assets/image-7.png' %}">
+      <h2 class="text-center text-black">Share your first illustration!</h2>
+      <a type="button" class="btn btn-success btn-lg" href="{% url 'illustrations' %}">Share Now!</a>
+  </div>
+
+  <hr>
+  <div class="blockcode">
+  
+    <footer class="page-footer text-black">
+      <div class="d-flex flex-column mx-auto py-5" style="width: 70%">
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="align-self-center">
+            <a href="/#" class="d-flex align-items-center p-0 text-black" style="text-decoration: none;">
+              <span class="h5 font-weight-bold text-black" style="margin-bottom: 160px;">Doodle</span>
+            </a>
+          </div>
+          <div>
+            <p class="h5 mb-4" style="font-weight: 600">Get to know us</p>
+            <ul class="p-0" style="list-style: none; cursor: pointer">
+              <li class="my-2">
+                <a class="text-black" href="{% url 'illustrations' %}" style="text-decoration: none;">Illustrations</a>
+              </li>
+              <li class="my-2">
+                <a class="text-black" href="/" style="text-decoration: none;">Blog</a>
+              </li>
+              <li class="my-2">
+                <a class="text-black" href="{% url 'artists' %}" style="text-decoration: none;">Artists</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="h5 mb-4" style="font-weight: 600">Help</p>
+            <ul class="p-0" style="list-style: none; cursor: pointer">
+              <li class="my-2">
+                <a class="text-black" href="{% url 'contact' %}" style="text-decoration: none;">Contact</a>
+              </li>
+              <li class="my-2">
+                <a class="text-black" href="{% url 'register' %}" style="text-decoration: none;">Sign Up</a>
+              </li>
+              <li class="my-2">
+                <a class="text-black" href="{% url 'login' %}" style="text-decoration: none;">Login</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="h5 mb-4" style="font-weight: 600">Stay in touch</p>
+            <ul class="p-0" style="list-style: none; cursor: pointer">
+              <li class="my-2">
+                <a class="text-black" href="/" style="text-decoration: none;">Discord</a>
+              </li>
+              <li class="my-2">
+                <a class="text-black" href="/" style="text-decoration: none;">Instagram</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <small class="text-center mt-5">&copy; Doodle, 2024. All rights reserved.</small>
+      </div>
+    </footer>
+  </div>
+
+{% endblock %}

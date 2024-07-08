@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Doodle - Login
+{% endblock %}
+
+{% block style %}
+<style>
+    form { max-width:420px; margin:50px auto; }
+
+form {
+    margin-top: 120px;
+}
+
+::-webkit-scrollbar {
+width: 3px;
+}
+
+::-webkit-scrollbar-track {
+background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+background: #198754;
+border-radius: 10px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button class="btn btn-primary">Login</button>
+</form>
+
+<h5 class="text-black text-center">Dont have an account?<a href="{% url 'register' %}">Create One!</a></h5>
+
+{% endblock %}
