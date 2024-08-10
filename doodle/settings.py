@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-x-!x)8mvp^vkn)b$m)+nor$fffpw-11ydub5+!)e&j5sad0qtk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['doodle-generator-n9il7fod.devinapps.com']
 
 
 # Application definition
@@ -133,5 +133,3 @@ LOGOUT_REDIRECT_URL = '/illustrations'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
