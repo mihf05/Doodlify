@@ -15,8 +15,18 @@ Doodle - User Profile
     <div class="profile-info">
         <p><strong>Username:</strong> {{ user.username }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
-        <!-- Add more user information as needed -->
     </div>
-    <a href="{% url 'illustrations' %}" class="btn btn-primary">View My Doodles</a>
+    <h3>My Doodles</h3>
+    <div class="user-doodles">
+        {% for doodle in user.postdoodle_set.all %}
+            <div class="doodle-item">
+                <img src="{% url 'serve_image' image_name=doodle.photo.name %}" alt="{{ doodle.text }}">
+                <p>{{ doodle.text }}</p>
+            </div>
+        {% empty %}
+            <p>You haven't created any doodles yet.</p>
+        {% endfor %}
+    </div>
+    <a href="{% url 'create_doodle' %}" class="btn btn-primary">Create New Doodle</a>
 </div>
 {% endblock %}

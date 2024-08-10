@@ -4,6 +4,9 @@ from .forms import PostDoodleForm, UserRegistrationForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.http import FileResponse, Http404
+from django.conf import settings
+import os
 
 # Create your views here.
 def home(request):
@@ -34,12 +37,11 @@ def create_doodle(request):
 
 @login_required
 def delete_doodle(request, doodle_id):
-    post_doodle = get_object_or_404(PostDoodle, pk=doodle_id, user = request.user)
+    post_doodle = get_object_or_404(PostDoodle, pk=doodle_id, user=request.user)
     if request.method == "POST":
         post_doodle.delete()
         return redirect('illustrations')
     return render(request, 'illustrations/doodle_confirm_delete.html', {'post_doodle': post_doodle})
-
 
 def register(request):
     if request.method == "POST":
@@ -57,3 +59,10 @@ def register(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html', {'user': request.user})
+
+@login_required
+def serve_image(request, image_name):
+    file_path = os.path.join(settings.MEDIA_ROOT, 'photos', image_name)
+    if os.path.exists(file_path):
+        return FileResponse(open(file_path, 'rb'), content_type='image/jpeg')
+    raise Http404("Image does not exist")

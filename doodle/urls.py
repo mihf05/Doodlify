@@ -19,10 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.urls import views as auth_views
+from illustrations import views as illustration_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('illustrations.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('images/<str:image_name>/', illustration_views.serve_image, name='serve_image'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
