@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Doodle - User Profile
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <h2 class="auth-title">User Profile</h2>
+    <div class="profile-info">
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <!-- Add more user information as needed -->
+    </div>
+    <a href="{% url 'illustrations' %}" class="btn btn-primary">View My Doodles</a>
+</div>
+{% endblock %}

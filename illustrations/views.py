@@ -53,3 +53,7 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html', {'user': request.user})

@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-x-!x)8mvp^vkn)b$m)+nor$fffpw-11ydub5+!)e&j5sad0qtk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['doodle-generator-n9il7fod.devinapps.com']
+ALLOWED_HOSTS = ['doodle-generator-n9il7fod.devinapps.com', '0.0.0.0']
+
+CSRF_TRUSTED_ORIGINS = ['https://doodle-generator-n9il7fod.devinapps.com']
 
 
 # Application definition
@@ -120,6 +122,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT = '/home/ubuntu/Doodlify/staticfiles/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
