@@ -1,10 +1,10 @@
 ## Doodlify
 ### installation progress
 ```bash
-git clone https://github.com/mihf05/Doodlify.git
+git clone https://github.com/mihf05/sketchify.git
 cd Doodlify
-python -m venv .venv
-.venv/Scripts/activate
+python -m venv venv
+venv/Scripts/activate
 pip install -r requirements.txt
 py manage.py runserver
 ```
